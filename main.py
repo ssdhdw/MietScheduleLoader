@@ -5,7 +5,7 @@ import openpyxl
 def merge_cells(ws):
     for column in range(3, 9):
         column_chr = chr(64 + column)
-        for row in range(0, 7):
+        for row in range(0, 8):
             row = row * 4 + 2
             if ws.cell(column=column, row=row).value == ws.cell(column=column, row=row + 1).value and \
                     ws.cell(column=column, row=row + 1).value == ws.cell(column=column, row=row + 2).value and \
@@ -45,7 +45,7 @@ def main():
             i["DayNumber"] = 2
         elif i["DayNumber"] == 2:
             i["DayNumber"] = 1
-        row = (i["Time"]["Code"] - 1 if i["Time"]["Code"] < 4 else i["Time"]["Code"] - 2) * 4 + 2 + i["DayNumber"]
+        row = (i["Time"]["Code"] - 1) * 4 + 2 + i["DayNumber"]
         ws.cell(column=column,
                 row=row,
                 value=f'{i["Room"]["Name"]} | {i["Class"]["Name"]}')
